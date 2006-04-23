@@ -1,0 +1,13 @@
+--- libasyncns-0.1/configure.ac.orig	2005-01-08 02:04:04.000000000 +0100
++++ libasyncns-0.1/configure.ac	2006-04-23 14:20:59.398751000 +0200
+@@ -62,8 +62,8 @@
+ AC_TYPE_SIGNAL
+ AC_CHECK_FUNCS([memset select strndup setresuid setreuid])
+ 
+-AC_CHECK_LIB(nsl, gethostbyname)
+-AC_CHECK_LIB(socket, connect)
++AC_SEARCH_LIBS(gethostbyname, nsl)
++AC_SEARCH_LIBS(connect, socket)
+ 
+ ACX_PTHREAD
+ 
