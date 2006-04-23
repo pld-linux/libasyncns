@@ -1,0 +1,103 @@
+Summary:	C library for executing name service queries asynchronously
+Summary(pl):	Biblioteka C do asynchronicznego wykonywania zapytañ o nazwy
+Name:		libasyncns
+Version:	0.1
+Release:	1
+License:	LGPL v2+
+Group:		Libraries
+Source0:	http://0pointer.de/lennart/projects/libasyncns/%{name}-%{version}.tar.gz
+# Source0-md5:	2bd04980fdb52be7824feb0cdfc535a9
+Patch0:		%{name}-link.patch
+URL:		http://0pointer.de/lennart/projects/libasyncns/
+BuildRequires:	autoconf >= 2.57
+BuildRequires:	automake
+BuildRequires:	libtool
+BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
+
+%description
+libasyncns is a C library for Linux/Unix for executing name service
+queries asynchronously. It is an asynchronous wrapper around
+getaddrinfo(3) and getnameinfo(3) from the libc.
+
+In contrast to GNU's asynchronous name resolving API getaddrinfo_a(),
+libasyncns does not make use of UNIX signals for reporting completion
+of name queries. Instead, the API exports a standard UNIX file
+descriptor which may be integerated cleanly into custom main loops.
+
+%description -l pl
+libasyncns to biblioteka C dla Linuksa/Uniksa do asynchronicznego
+wykonywania zapytañ o nazwy. Jest to asynchroniczne obudowanie dla
+funkcji getaddrinfo(3) i getnameinfo(3) z libc.
+
+W przeciwieñstwie do asynchronicznego API rozwi±zywania nazw GNU,
+getaddrinfo_a(), libasyncns nie wykorzystuje uniksowych sygna³ów do
+informowania o zakoñczeniu zapytañ. Zamiast tego API eksportuje
+standardowy uniksowy deskryptor pliku, który mo¿na ³atwo zintegrowaæ
+we w³asnych g³ównych pêtlach.
+
+%package devel
+Summary:	Header files for libasyncns library
+Summary(pl):	Pliki nag³ówkowe biblioteki libasyncns
+Group:		Development/Libraries
+Requires:	%{name} = %{version}-%{release}
+
+%description devel
+Header files for libasyncns library.
+
+%description devel -l pl
+Pliki nag³ówkowe biblioteki libasyncns.
+
+%package static
+Summary:	Static libasyncns library
+Summary(pl):	Statyczna biblioteka libasyncns
+Group:		Development/Libraries
+Requires:	%{name}-devel = %{version}-%{release}
+
+%description static
+Static libasyncns library.
+
+%description static -l pl
+Statyczna biblioteka libasyncns.
+
+%prep
+%setup -q
+%patch0 -p1
+
+%build
+%{__libtoolize}
+%{__aclocal}
+%{__autoconf}
+%{__autoheader}
+%{__automake}
+# no need to generate doc/README from doc/README.html, there is README anyway
+%configure \
+	--disable-lynx
+%{__make}
+
+%install
+rm -rf $RPM_BUILD_ROOT
+
+%{__make} install \
+	DESTDIR=$RPM_BUILD_ROOT
+
+%clean
+rm -rf $RPM_BUILD_ROOT
+
+%post	-p /sbin/ldconfig
+%postun	-p /sbin/ldconfig
+
+%files
+%defattr(644,root,root,755)
+%doc README
+%attr(755,root,root) %{_libdir}/libasyncns.so.*.*.*
+
+%files devel
+%defattr(644,root,root,755)
+%attr(755,root,root) %{_libdir}/libasyncns.so
+%{_libdir}/libasyncns.la
+%{_includedir}/asyncns.h
+%{_pkgconfigdir}/libasyncns.pc
+
+%files static
+%defattr(644,root,root,755)
+%{_libdir}/libasyncns.a
