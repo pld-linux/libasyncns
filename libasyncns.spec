@@ -1,5 +1,5 @@
 Summary:	C library for executing name service queries asynchronously
-Summary(pl):	Biblioteka C do asynchronicznego wykonywania zapytaÒ o nazwy
+Summary(pl.UTF-8):   Biblioteka C do asynchronicznego wykonywania zapyta≈Ñ o nazwy
 Name:		libasyncns
 Version:	0.1
 Release:	1
@@ -24,39 +24,39 @@ libasyncns does not make use of UNIX signals for reporting completion
 of name queries. Instead, the API exports a standard UNIX file
 descriptor which may be integerated cleanly into custom main loops.
 
-%description -l pl
+%description -l pl.UTF-8
 libasyncns to biblioteka C dla Linuksa/Uniksa do asynchronicznego
-wykonywania zapytaÒ o nazwy. Jest to asynchroniczne obudowanie dla
+wykonywania zapyta≈Ñ o nazwy. Jest to asynchroniczne obudowanie dla
 funkcji getaddrinfo(3) i getnameinfo(3) z libc.
 
-W przeciwieÒstwie do asynchronicznego API rozwi±zywania nazw GNU,
-getaddrinfo_a(), libasyncns nie wykorzystuje uniksowych sygna≥Ûw do
-informowania o zakoÒczeniu zapytaÒ. Zamiast tego API eksportuje
-standardowy uniksowy deskryptor pliku, ktÛry moøna ≥atwo zintegrowaÊ
-we w≥asnych g≥Ûwnych pÍtlach.
+W przeciwie≈Ñstwie do asynchronicznego API rozwiƒÖzywania nazw GNU,
+getaddrinfo_a(), libasyncns nie wykorzystuje uniksowych sygna≈Ç√≥w do
+informowania o zako≈Ñczeniu zapyta≈Ñ. Zamiast tego API eksportuje
+standardowy uniksowy deskryptor pliku, kt√≥ry mo≈ºna ≈Çatwo zintegrowaƒá
+we w≈Çasnych g≈Ç√≥wnych pƒôtlach.
 
 %package devel
 Summary:	Header files for libasyncns library
-Summary(pl):	Pliki nag≥Ûwkowe biblioteki libasyncns
+Summary(pl.UTF-8):   Pliki nag≈Ç√≥wkowe biblioteki libasyncns
 Group:		Development/Libraries
 Requires:	%{name} = %{version}-%{release}
 
 %description devel
 Header files for libasyncns library.
 
-%description devel -l pl
-Pliki nag≥Ûwkowe biblioteki libasyncns.
+%description devel -l pl.UTF-8
+Pliki nag≈Ç√≥wkowe biblioteki libasyncns.
 
 %package static
 Summary:	Static libasyncns library
-Summary(pl):	Statyczna biblioteka libasyncns
+Summary(pl.UTF-8):   Statyczna biblioteka libasyncns
 Group:		Development/Libraries
 Requires:	%{name}-devel = %{version}-%{release}
 
 %description static
 Static libasyncns library.
 
-%description static -l pl
+%description static -l pl.UTF-8
 Statyczna biblioteka libasyncns.
 
 %prep
