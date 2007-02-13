@@ -1,5 +1,5 @@
 Summary:	C library for executing name service queries asynchronously
-Summary(pl.UTF-8):   Biblioteka C do asynchronicznego wykonywania zapytań o nazwy
+Summary(pl.UTF-8):	Biblioteka C do asynchronicznego wykonywania zapytań o nazwy
 Name:		libasyncns
 Version:	0.1
 Release:	1
@@ -37,7 +37,7 @@ we własnych głównych pętlach.
 
 %package devel
 Summary:	Header files for libasyncns library
-Summary(pl.UTF-8):   Pliki nagłówkowe biblioteki libasyncns
+Summary(pl.UTF-8):	Pliki nagłówkowe biblioteki libasyncns
 Group:		Development/Libraries
 Requires:	%{name} = %{version}-%{release}
 
@@ -49,7 +49,7 @@ Pliki nagłówkowe biblioteki libasyncns.
 
 %package static
 Summary:	Static libasyncns library
-Summary(pl.UTF-8):   Statyczna biblioteka libasyncns
+Summary(pl.UTF-8):	Statyczna biblioteka libasyncns
 Group:		Development/Libraries
 Requires:	%{name}-devel = %{version}-%{release}
 
