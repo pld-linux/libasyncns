@@ -1,3 +1,7 @@
+#
+# Conditional build:
+%bcond_without	static_libs	# don't build static library
+#
 Summary:	C library for executing name service queries asynchronously
 Summary(pl.UTF-8):	Biblioteka C do asynchronicznego wykonywania zapytań o nazwy
 Name:		libasyncns
@@ -71,7 +75,8 @@ Statyczna biblioteka libasyncns.
 %{__automake}
 # no need to generate doc/README from doc/README.html, there is README anyway
 %configure \
-	--disable-lynx
+	--disable-lynx \
+	%{!?with_static_libs:--disable-static}
 %{__make}
 
 %install
@@ -98,6 +103,8 @@ rm -rf $RPM_BUILD_ROOT
 %{_includedir}/asyncns.h
 %{_pkgconfigdir}/libasyncns.pc
 
+%if %{with static_libs}
 %files static
 %defattr(644,root,root,755)
 %{_libdir}/libasyncns.a
+%endif
