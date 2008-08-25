@@ -5,16 +5,16 @@
 Summary:	C library for executing name service queries asynchronously
 Summary(pl.UTF-8):	Biblioteka C do asynchronicznego wykonywania zapytań o nazwy
 Name:		libasyncns
-Version:	0.3
+Version:	0.5
 Release:	1
-License:	LGPL v2+
+License:	LGPL v2.1+
 Group:		Libraries
 Source0:	http://0pointer.de/lennart/projects/libasyncns/%{name}-%{version}.tar.gz
-# Source0-md5:	1aab5b1946ab0071b56a49e5b4efdc8c
+# Source0-md5:	0347f9916dfb6cd0da5c38c4406d76e5
 Patch0:		%{name}-link.patch
 URL:		http://0pointer.de/lennart/projects/libasyncns/
-BuildRequires:	autoconf >= 2.57
-BuildRequires:	automake
+BuildRequires:	autoconf >= 2.59
+BuildRequires:	automake >= 1:1.9
 BuildRequires:	libtool
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
@@ -95,6 +95,7 @@ rm -rf $RPM_BUILD_ROOT
 %defattr(644,root,root,755)
 %doc README
 %attr(755,root,root) %{_libdir}/libasyncns.so.*.*.*
+%attr(755,root,root) %ghost %{_libdir}/libasyncns.so.0
 
 %files devel
 %defattr(644,root,root,755)
