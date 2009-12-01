@@ -5,17 +5,14 @@
 Summary:	C library for executing name service queries asynchronously
 Summary(pl.UTF-8):	Biblioteka C do asynchronicznego wykonywania zapytań o nazwy
 Name:		libasyncns
-Version:	0.5
+Version:	0.8
 Release:	1
 License:	LGPL v2.1+
 Group:		Libraries
 Source0:	http://0pointer.de/lennart/projects/libasyncns/%{name}-%{version}.tar.gz
-# Source0-md5:	0347f9916dfb6cd0da5c38c4406d76e5
+# Source0-md5:	1f553d6ce1ad255bc83b3d8e9384f515
 Patch0:		%{name}-link.patch
 URL:		http://0pointer.de/lennart/projects/libasyncns/
-BuildRequires:	autoconf >= 2.59
-BuildRequires:	automake >= 1:1.9
-BuildRequires:	libtool
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %description
@@ -68,11 +65,6 @@ Statyczna biblioteka libasyncns.
 %patch0 -p1
 
 %build
-%{__libtoolize}
-%{__aclocal}
-%{__autoconf}
-%{__autoheader}
-%{__automake}
 # no need to generate doc/README from doc/README.html, there is README anyway
 %configure \
 	--disable-lynx \
