@@ -13,6 +13,9 @@ Source0:	http://0pointer.de/lennart/projects/libasyncns/%{name}-%{version}.tar.g
 # Source0-md5:	1f553d6ce1ad255bc83b3d8e9384f515
 Patch0:		%{name}-link.patch
 URL:		http://0pointer.de/lennart/projects/libasyncns/
+BuildRequires:	autoconf >= 2.59
+BuildRequires:	automake >= 1:1.9
+BuildRequires:	libtool
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %description
@@ -65,6 +68,11 @@ Statyczna biblioteka libasyncns.
 %patch0 -p1
 
 %build
+%{__libtoolize}
+%{__aclocal} -I m4
+%{__autoconf}
+%{__autoheader}
+%{__automake}
 # no need to generate doc/README from doc/README.html, there is README anyway
 %configure \
 	--disable-lynx \
