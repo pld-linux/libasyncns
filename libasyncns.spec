@@ -6,7 +6,7 @@ Summary:	C library for executing name service queries asynchronously
 Summary(pl.UTF-8):	Biblioteka C do asynchronicznego wykonywania zapytań o nazwy
 Name:		libasyncns
 Version:	0.8
-Release:	1
+Release:	2
 License:	LGPL v2.1+
 Group:		Libraries
 Source0:	http://0pointer.de/lennart/projects/libasyncns/%{name}-%{version}.tar.gz
